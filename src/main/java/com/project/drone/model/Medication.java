@@ -10,16 +10,16 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Drone {
+public class Medication {
 
     @Id
-    String serialNumber;
+    int id;
 
-    String model;
+    String name;
 
-    int loadWeight;
+    int weight;
 
-    int batteryCapacity;
+    String medicationCode;
 
-    DroneState droneState;
+    String medicationImage;
 }
