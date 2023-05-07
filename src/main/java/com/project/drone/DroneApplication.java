@@ -30,7 +30,7 @@ public class DroneApplication {
 			drone.setSerialNumber("DRN572462506325");
 			drone.setModel("lightweight");
 			drone.setLoadWeight(400);
-			drone.setBatteryCapacity(45);
+			drone.setBatteryCapacity(80);
 			drone.setDroneState(DroneState.IDLE);
 			droneList.add(drone);
 
@@ -46,16 +46,16 @@ public class DroneApplication {
 			drone2.setSerialNumber("DRN572462506327");
 			drone2.setModel("lightweight");
 			drone2.setLoadWeight(400);
-			drone2.setBatteryCapacity(45);
-			drone2.setDroneState(DroneState.RETURNING);
+			drone2.setBatteryCapacity(50);
+			drone2.setDroneState(DroneState.LOADING);
 			droneList.add(drone2);
 
 			Drone drone3 = new Drone();
 			drone3.setSerialNumber("DRN572462506328");
 			drone3.setModel("lightweight");
 			drone3.setLoadWeight(400);
-			drone3.setBatteryCapacity(45);
-			drone3.setDroneState(DroneState.RETURNING);
+			drone3.setBatteryCapacity(24);
+			drone3.setDroneState(DroneState.LOADING);
 			droneList.add(drone3);
 			droneRepository.saveAll(droneList);
 

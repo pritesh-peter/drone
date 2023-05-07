@@ -22,4 +22,5 @@ public class Drone {
     int batteryCapacity;
 
     DroneState droneState;
+
 }
