@@ -20,7 +20,7 @@ public class DroneToMedication {
 
 
     @ManyToOne
-    @JoinColumn(name = "drone_serial_number")
+    @JoinColumn(name = "drone_id")
     @JsonIgnore
     Drone drone;
 

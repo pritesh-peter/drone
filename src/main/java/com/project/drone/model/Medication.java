@@ -17,11 +17,11 @@ public class Medication {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    int id;
+    Integer id;
 
     String name;
 
-    int weight;
+    Integer weight;
 
     String medicationCode;
 

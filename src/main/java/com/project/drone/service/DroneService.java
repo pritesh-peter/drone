@@ -10,4 +10,6 @@ public interface DroneService {
     Drone addNewDrone(Drone drone);
 
     List<Drone> findAvailableDroneForLoading(Medication medication);
+
+    Drone findDroneById(Integer droneId);
 }

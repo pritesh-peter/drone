@@ -1,5 +1,6 @@
 package com.project.drone.service.impl;
 
+import com.project.drone.exceptions.ResourceNotFoundException;
 import com.project.drone.model.Drone;
 import com.project.drone.model.DroneState;
 import com.project.drone.model.DroneToMedication;
@@ -49,5 +50,12 @@ public class DroneServiceImpl implements DroneService {
         });
 
         return nonIdleDroneList;
+    }
+
+    @Override
+    public Drone findDroneById(Integer droneId) {
+
+        return droneRepository.findById(droneId)
+                .orElseThrow(()-> new ResourceNotFoundException("Drone","id",droneId));
     }
 }

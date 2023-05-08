@@ -1,6 +1,8 @@
 package com.project.drone.model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -13,14 +15,17 @@ import lombok.NoArgsConstructor;
 public class Drone {
 
     @Id
-    String serialNumber;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
 
-    String model;
+    private String serialNumber;
 
-    int weigtLimit;
+    private String model;
 
-    int batteryCapacity;
+    private int weigtLimit;
 
-    DroneState droneState;
+    private int batteryCapacity;
+
+    private DroneState droneState;
 
 }

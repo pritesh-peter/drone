@@ -4,6 +4,5 @@ public enum MedicationState {
     WAITING,
     LOADING,
     LOADED,
-    DELIVERING,
     DELIVERED
 }

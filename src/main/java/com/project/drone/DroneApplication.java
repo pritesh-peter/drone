@@ -24,6 +24,7 @@ public class DroneApplication {
 	@Bean
 	CommandLineRunner commandLineRunner(DroneRepository droneRepository, MedicationRepository medicationRepository, DroneToMedicationRepository droneToMedicationRepository){
 		return args -> {
+			//Inserting dummy datas for drone
 			List<Drone> droneList = new ArrayList<>();
 			Drone drone = new Drone();
 			drone.setSerialNumber("DRN572462506325");
@@ -56,8 +57,58 @@ public class DroneApplication {
 			drone3.setBatteryCapacity(24);
 			drone3.setDroneState(DroneState.LOADING);
 			droneList.add(drone3);
+
+			Drone drone4 = new Drone();
+			drone4.setSerialNumber("DRN572462506329");
+			drone4.setModel("lightweight");
+			drone4.setWeigtLimit(400);
+			drone4.setBatteryCapacity(80);
+			drone4.setDroneState(DroneState.IDLE);
+			droneList.add(drone4);
+
+			Drone drone5 = new Drone();
+			drone5.setSerialNumber("DRN572462506330");
+			drone5.setModel("lightweight");
+			drone5.setWeigtLimit(400);
+			drone5.setBatteryCapacity(45);
+			drone5.setDroneState(DroneState.LOADED);
+			droneList.add(drone5);
+
+			Drone drone6 = new Drone();
+			drone6.setSerialNumber("DRN572462506331");
+			drone6.setModel("lightweight");
+			drone6.setWeigtLimit(500);
+			drone6.setBatteryCapacity(50);
+			drone6.setDroneState(DroneState.LOADING);
+			droneList.add(drone6);
+
+			Drone drone7 = new Drone();
+			drone7.setSerialNumber("DRN572462506332");
+			drone7.setModel("lightweight");
+			drone7.setWeigtLimit(400);
+			drone7.setBatteryCapacity(24);
+			drone7.setDroneState(DroneState.LOADING);
+			droneList.add(drone7);
 			droneRepository.saveAll(droneList);
 
+			Drone drone8 = new Drone();
+			drone8.setSerialNumber("DRN572462506333");
+			drone8.setModel("lightweight");
+			drone8.setWeigtLimit(500);
+			drone8.setBatteryCapacity(50);
+			drone8.setDroneState(DroneState.LOADING);
+			droneList.add(drone8);
+
+			Drone drone9 = new Drone();
+			drone9.setSerialNumber("DRN572462506334");
+			drone9.setModel("lightweight");
+			drone9.setWeigtLimit(500);
+			drone9.setBatteryCapacity(24);
+			drone9.setDroneState(DroneState.LOADING);
+			droneList.add(drone9);
+			droneRepository.saveAll(droneList);
+
+			//Inserting dummy datas for medication
 			Medication m2 = new Medication();
 			m2.setName("G125JX");
 			m2.setWeight(100);
@@ -86,6 +137,8 @@ public class DroneApplication {
 			m5.setMedicationImage("KSLKKK12.jpeg");
 			medicationRepository.save(m5);
 
+
+			//Inserting dummy datas for DroneToMedication
 
 			DroneToMedication dm1 = new DroneToMedication();
 			dm1.setDrone(drone3);
