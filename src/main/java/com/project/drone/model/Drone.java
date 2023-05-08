@@ -17,7 +17,7 @@ public class Drone {
 
     String model;
 
-    int loadWeight;
+    int weigtLimit;
 
     int batteryCapacity;
 

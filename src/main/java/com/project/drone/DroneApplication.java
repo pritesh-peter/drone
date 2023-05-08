@@ -1,10 +1,9 @@
 package com.project.drone;
 
 
-import com.project.drone.model.Drone;
-import com.project.drone.model.DroneState;
-import com.project.drone.model.Medication;
+import com.project.drone.model.*;
 import com.project.drone.repositories.DroneRepository;
+import com.project.drone.repositories.DroneToMedicationRepository;
 import com.project.drone.repositories.MedicationRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -23,13 +22,13 @@ public class DroneApplication {
 
 
 	@Bean
-	CommandLineRunner commandLineRunner(DroneRepository droneRepository, MedicationRepository medicationRepository){
+	CommandLineRunner commandLineRunner(DroneRepository droneRepository, MedicationRepository medicationRepository, DroneToMedicationRepository droneToMedicationRepository){
 		return args -> {
 			List<Drone> droneList = new ArrayList<>();
 			Drone drone = new Drone();
 			drone.setSerialNumber("DRN572462506325");
 			drone.setModel("lightweight");
-			drone.setLoadWeight(400);
+			drone.setWeigtLimit(400);
 			drone.setBatteryCapacity(80);
 			drone.setDroneState(DroneState.IDLE);
 			droneList.add(drone);
@@ -37,7 +36,7 @@ public class DroneApplication {
 			Drone drone1 = new Drone();
 			drone1.setSerialNumber("DRN572462506326");
 			drone1.setModel("lightweight");
-			drone1.setLoadWeight(400);
+			drone1.setWeigtLimit(400);
 			drone1.setBatteryCapacity(45);
 			drone1.setDroneState(DroneState.LOADED);
 			droneList.add(drone1);
@@ -45,7 +44,7 @@ public class DroneApplication {
 			Drone drone2 = new Drone();
 			drone2.setSerialNumber("DRN572462506327");
 			drone2.setModel("lightweight");
-			drone2.setLoadWeight(400);
+			drone2.setWeigtLimit(400);
 			drone2.setBatteryCapacity(50);
 			drone2.setDroneState(DroneState.LOADING);
 			droneList.add(drone2);
@@ -53,7 +52,7 @@ public class DroneApplication {
 			Drone drone3 = new Drone();
 			drone3.setSerialNumber("DRN572462506328");
 			drone3.setModel("lightweight");
-			drone3.setLoadWeight(400);
+			drone3.setWeigtLimit(400);
 			drone3.setBatteryCapacity(24);
 			drone3.setDroneState(DroneState.LOADING);
 			droneList.add(drone3);
@@ -87,6 +86,36 @@ public class DroneApplication {
 			m5.setMedicationImage("KSLKKK12.jpeg");
 			medicationRepository.save(m5);
 
+
+			DroneToMedication dm1 = new DroneToMedication();
+			dm1.setDrone(drone3);
+			dm1.setMedication(m5);
+			dm1.setMedicationState(MedicationState.LOADING);
+			droneToMedicationRepository.save(dm1);
+
+			DroneToMedication dm2 = new DroneToMedication();
+			dm2.setDrone(drone3);
+			dm2.setMedication(m5);
+			dm2.setMedicationState(MedicationState.LOADING);
+			droneToMedicationRepository.save(dm2);
+
+			DroneToMedication dm3 = new DroneToMedication();
+			dm3.setDrone(drone);
+			dm3.setMedication(m5);
+			dm3.setMedicationState(MedicationState.LOADING);
+			droneToMedicationRepository.save(dm3);
+
+			DroneToMedication dm4 = new DroneToMedication();
+			dm4.setDrone(drone3);
+			dm4.setMedication(m5);
+			dm4.setMedicationState(MedicationState.LOADING);
+			droneToMedicationRepository.save(dm4);
+
+			DroneToMedication dm5 = new DroneToMedication();
+			dm5.setDrone(drone1);
+			dm5.setMedication(m2);
+			dm5.setMedicationState(MedicationState.LOADING);
+			droneToMedicationRepository.save(dm5);
 		};
 	}
 }

@@ -29,5 +29,5 @@ public class DroneToMedication {
     @JsonIgnore
     Medication medication;
 
-    DroneState droneState;
+    MedicationState medicationState;
 }

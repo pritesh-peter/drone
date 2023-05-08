@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -28,9 +29,15 @@ public class DispatchController {
     @PostMapping("/drone/{medicationId}")
     public ResponseEntity<List<Drone>> dispatchDrone(@PathVariable Integer medicationId) {
 
+        List<Drone> availableDrones = new ArrayList<>();
+
         Medication medication = medicationService.findMedicationById(medicationId);
 
-        List<Drone> availableDrones = droneService.findAvailableDroneForLoading(medication);
+        if(medication!=null){
+          availableDrones = droneService.findAvailableDroneForLoading(medication);
+        }else{
+            return new ResponseEntity<>(null,HttpStatus.NOT_FOUND);
+        }
 
         return new ResponseEntity<>(availableDrones, HttpStatus.OK);
     }
