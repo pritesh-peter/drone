@@ -4,6 +4,8 @@ import com.project.drone.model.*;
 import com.project.drone.payloads.AvailableDrone;
 import com.project.drone.repositories.DroneToMedicationRepository;
 import com.project.drone.service.DroneService;
+import com.project.drone.service.DroneToMedicationService;
+import com.project.drone.service.EventLogService;
 import com.project.drone.service.MedicationService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,17 +17,19 @@ import java.util.List;
 @RequestMapping("/api/v1/drone")
 public class DispatchController {
 
-
     private final DroneService droneService;
 
     private final MedicationService medicationService;
 
-    private final DroneToMedicationRepository droneToMedicationRepository;
+    private final DroneToMedicationService droneToMedicationService;
 
-     public DispatchController(DroneService droneService, MedicationService medicationService,DroneToMedicationRepository droneToMedicationRepository){
+    private final EventLogService eventLogService;
+
+     public DispatchController(DroneService droneService,MedicationService medicationService,DroneToMedicationService droneToMedicationService, EventLogService eventLogService){
         this.droneService = droneService;
         this.medicationService = medicationService;
-        this.droneToMedicationRepository = droneToMedicationRepository;
+        this.droneToMedicationService = droneToMedicationService;
+        this.eventLogService = eventLogService;
     }
 
 
@@ -39,21 +43,16 @@ public class DispatchController {
         return new ResponseEntity<>(availableDrones, HttpStatus.OK);
     }
     @PostMapping("/dispatch-drone/")
-    public ResponseEntity<DroneToMedication> dispatchDrone(@RequestBody Integer medicationId) {
+    public ResponseEntity<DroneToMedication> dispatchDrone(@RequestBody Medication medication) {
 
-        Medication medication = medicationService.findMedicationById(medicationId);
+        Medication loadingMecation = medicationService.findMedicationById(medication.getId());
 
         List<AvailableDrone>  availableDrones = droneService.findAvailableDroneForLoading(medication.getWeight());
-
         AvailableDrone bestAvailableDroneForLoad = availableDrones.get(0);
 
-        DroneToMedication droneToMedication = new DroneToMedication();
-        droneToMedication.setMedication(medication);
-        droneToMedication.setMedicationState(MedicationState.WAITING);
-        droneToMedication.setDrone(droneService.findDroneById(bestAvailableDroneForLoad.getId()));
-        droneToMedicationRepository.save(droneToMedication);
+        DroneToMedication dispatchedDrone = droneToMedicationService.addDroneToMedication(bestAvailableDroneForLoad,medication);
 
-        return new ResponseEntity<>(droneToMedication, HttpStatus.OK);
+        return new ResponseEntity<>(dispatchedDrone, HttpStatus.OK);
     }
 
     @GetMapping("/check-medications/{droneId}")
@@ -66,8 +65,12 @@ public class DispatchController {
     @PostMapping("/event-log")
     public ResponseEntity<String> createEventLog(@RequestBody Drone drone){
 
-         //update drone batery level too
+         boolean createDroneBatteryStatusLog = eventLogService.createDroneBatteryStatusLog(drone);
 
-    return null;
+         if(createDroneBatteryStatusLog){
+             return new ResponseEntity<>("Success",HttpStatus.CREATED);
+         }else{
+             return new ResponseEntity<>("Failed",HttpStatus.BAD_REQUEST);
+         }
     }
 }

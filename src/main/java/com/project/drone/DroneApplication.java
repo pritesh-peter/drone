@@ -29,7 +29,7 @@ public class DroneApplication {
 			Drone drone = new Drone();
 			drone.setSerialNumber("DRN572462506325");
 			drone.setModel("lightweight");
-			drone.setWeigtLimit(400);
+			drone.setWeightLimit(400);
 			drone.setBatteryCapacity(80);
 			drone.setDroneState(DroneState.LOADING);
 			droneList.add(drone);
@@ -37,7 +37,7 @@ public class DroneApplication {
 			Drone drone1 = new Drone();
 			drone1.setSerialNumber("DRN572462506326");
 			drone1.setModel("lightweight");
-			drone1.setWeigtLimit(400);
+			drone1.setWeightLimit(400);
 			drone1.setBatteryCapacity(45);
 			drone1.setDroneState(DroneState.IDLE);
 			droneList.add(drone1);
@@ -45,7 +45,7 @@ public class DroneApplication {
 			Drone drone2 = new Drone();
 			drone2.setSerialNumber("DRN572462506327");
 			drone2.setModel("lightweight");
-			drone2.setWeigtLimit(400);
+			drone2.setWeightLimit(400);
 			drone2.setBatteryCapacity(50);
 			drone2.setDroneState(DroneState.IDLE);
 			droneList.add(drone2);
@@ -53,7 +53,7 @@ public class DroneApplication {
 			Drone drone3 = new Drone();
 			drone3.setSerialNumber("DRN572462506328");
 			drone3.setModel("lightweight");
-			drone3.setWeigtLimit(400);
+			drone3.setWeightLimit(400);
 			drone3.setBatteryCapacity(24);
 			drone3.setDroneState(DroneState.LOADING);
 			droneList.add(drone3);
@@ -61,7 +61,7 @@ public class DroneApplication {
 			Drone drone4 = new Drone();
 			drone4.setSerialNumber("DRN572462506329");
 			drone4.setModel("lightweight");
-			drone4.setWeigtLimit(400);
+			drone4.setWeightLimit(400);
 			drone4.setBatteryCapacity(80);
 			drone4.setDroneState(DroneState.IDLE);
 			droneList.add(drone4);
@@ -69,7 +69,7 @@ public class DroneApplication {
 			Drone drone5 = new Drone();
 			drone5.setSerialNumber("DRN572462506330");
 			drone5.setModel("lightweight");
-			drone5.setWeigtLimit(400);
+			drone5.setWeightLimit(400);
 			drone5.setBatteryCapacity(45);
 			drone5.setDroneState(DroneState.LOADED);
 			droneList.add(drone5);
@@ -77,7 +77,7 @@ public class DroneApplication {
 			Drone drone6 = new Drone();
 			drone6.setSerialNumber("DRN572462506331");
 			drone6.setModel("lightweight");
-			drone6.setWeigtLimit(500);
+			drone6.setWeightLimit(500);
 			drone6.setBatteryCapacity(50);
 			drone6.setDroneState(DroneState.IDLE);
 			droneList.add(drone6);
@@ -85,7 +85,7 @@ public class DroneApplication {
 			Drone drone7 = new Drone();
 			drone7.setSerialNumber("DRN572462506332");
 			drone7.setModel("lightweight");
-			drone7.setWeigtLimit(500);
+			drone7.setWeightLimit(500);
 			drone7.setBatteryCapacity(30);
 			drone7.setDroneState(DroneState.DELIVERED);
 			droneList.add(drone7);
@@ -94,7 +94,7 @@ public class DroneApplication {
 			Drone drone8 = new Drone();
 			drone8.setSerialNumber("DRN572462506333");
 			drone8.setModel("lightweight");
-			drone8.setWeigtLimit(500);
+			drone8.setWeightLimit(500);
 			drone8.setBatteryCapacity(50);
 			drone8.setDroneState(DroneState.DELIVERING);
 			droneList.add(drone8);
@@ -102,7 +102,7 @@ public class DroneApplication {
 			Drone drone9 = new Drone();
 			drone9.setSerialNumber("DRN572462506334");
 			drone9.setModel("lightweight");
-			drone9.setWeigtLimit(500);
+			drone9.setWeightLimit(500);
 			drone9.setBatteryCapacity(24);
 			drone9.setDroneState(DroneState.DELIVERING);
 			droneList.add(drone9);

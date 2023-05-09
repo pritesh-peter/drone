@@ -19,16 +19,16 @@ public interface DroneToMedicationRepository extends JpaRepository<DroneToMedica
 
     List<DroneToMedication> findAllByDroneId(Integer droneId);
 
-    @Query(value="SELECT dr.id, SUM(m.weight) as loadedweight, (dr.weigt_limit-SUM(m.weight))  as availableWeightLimit  FROM DRONE_TO_MEDICATION d\n" +
+    @Query(value="SELECT dr.id, SUM(m.weight) as loadedweight, (dr.weight_limit-SUM(m.weight))  as availableWeightLimit  FROM DRONE_TO_MEDICATION d\n" +
             "inner join medication m on d.medication_id=m.id\n" +
             "inner join drone dr on d.drone_id=dr.id\n" +
             "where d.medication_state in ('0','1') and dr.battery_capacity>25\n" +
             "group by d.drone_id\n" +
             "having availableweightlimit>=?1\n" +
             "union \n" +
-            "SELECT dr.id, 0 as loadedweight, dr.weigt_limit as availableWeightLimit  FROM DRONE_TO_MEDICATION d\n" +
+            "SELECT dr.id, 0 as loadedweight, dr.weight_limit as availableWeightLimit  FROM DRONE_TO_MEDICATION d\n" +
             "right join drone dr on d.drone_id=dr.id\n" +
-            "where dr.drone_state='0' and dr.battery_capacity>25 and dr.weigt_limit>=?1\n",nativeQuery = true)
+            "where dr.drone_state='0' and dr.battery_capacity>25 and dr.weight_limit>=?1\n",nativeQuery = true)
     List<AvailableDrone> getAvailableDroneForLoading(double loadweight);
 
 
