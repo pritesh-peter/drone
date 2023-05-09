@@ -27,12 +27,7 @@ public class DroneServiceImpl implements DroneService {
     }
 
     @Override
-    public Drone addNewDrone(Drone drone) {
-        return null;
-    }
-
-    @Override
-    public List<AvailableDrone> findAvailableDroneForLoading(Integer medicationWeight) {
+    public List<AvailableDrone> findAvailableDroneForLoading(Double medicationWeight) {
 
 
         return droneToMedicationRepository.getAvailableDroneForLoading(medicationWeight);

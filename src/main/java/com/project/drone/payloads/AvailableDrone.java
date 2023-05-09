@@ -7,11 +7,11 @@ import lombok.NoArgsConstructor;
 
 public interface AvailableDrone {
 
-    Integer getId();
+    int getId();
 
-    Integer getLoadedWeight();
+    double getLoadedWeight();
 
-    Integer getAvailableWeightLimit();
+    double getAvailableWeightLimit();
 
 
 }

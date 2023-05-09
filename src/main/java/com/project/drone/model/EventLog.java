@@ -6,25 +6,23 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.*;
 
+import java.util.Date;
+
 @Entity
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Drone {
+public class EventLog {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    private String serialNumber;
+    private int droneId;
 
-    private String model;
+    private double batteryStatus;
 
-    private double weightLimit;
-
-    private int batteryCapacity;
-
-    private DroneState droneState;
+    private Date eventTimeStamp;
 
 }
