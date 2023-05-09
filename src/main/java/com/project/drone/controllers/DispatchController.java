@@ -2,6 +2,7 @@ package com.project.drone.controllers;
 
 import com.project.drone.model.Drone;
 import com.project.drone.model.Medication;
+import com.project.drone.payloads.AvailableDrone;
 import com.project.drone.repositories.DroneToMedicationRepository;
 import com.project.drone.service.DroneService;
 import com.project.drone.service.MedicationService;
@@ -30,18 +31,16 @@ public class DispatchController {
 
 
     @PostMapping("/dispatch/{medicationId}")
-    public ResponseEntity<List<Drone>> dispatchDrone(@PathVariable Integer medicationId) {
+    public ResponseEntity<List<AvailableDrone>> dispatchDrone(@PathVariable Integer medicationId) {
 
         Medication medication = medicationService.findMedicationById(medicationId);
 
-        List<Drone>    availableDrones = droneService.findAvailableDroneForLoading(medication);
+        List<AvailableDrone>  availableDrones = droneService.findAvailableDroneForLoading(medication.getWeight());
 
         return new ResponseEntity<>(availableDrones, HttpStatus.OK);
     }
     @GetMapping("/check-medications/{droneId}")
     public ResponseEntity<List<Medication>> checkLoadedMedication(@PathVariable Integer droneId){
-
-//         Drone drone = droneService.findDroneById(droneId);
 
          List<Medication> medicationList = medicationService.findLoadedMedicationsByDrone(droneId);
          return new ResponseEntity<>(medicationList,HttpStatus.OK);

@@ -31,7 +31,7 @@ public class DroneApplication {
 			drone.setModel("lightweight");
 			drone.setWeigtLimit(400);
 			drone.setBatteryCapacity(80);
-			drone.setDroneState(DroneState.IDLE);
+			drone.setDroneState(DroneState.LOADING);
 			droneList.add(drone);
 
 			Drone drone1 = new Drone();
@@ -39,7 +39,7 @@ public class DroneApplication {
 			drone1.setModel("lightweight");
 			drone1.setWeigtLimit(400);
 			drone1.setBatteryCapacity(45);
-			drone1.setDroneState(DroneState.LOADED);
+			drone1.setDroneState(DroneState.IDLE);
 			droneList.add(drone1);
 
 			Drone drone2 = new Drone();
@@ -47,7 +47,7 @@ public class DroneApplication {
 			drone2.setModel("lightweight");
 			drone2.setWeigtLimit(400);
 			drone2.setBatteryCapacity(50);
-			drone2.setDroneState(DroneState.LOADING);
+			drone2.setDroneState(DroneState.IDLE);
 			droneList.add(drone2);
 
 			Drone drone3 = new Drone();
@@ -79,15 +79,15 @@ public class DroneApplication {
 			drone6.setModel("lightweight");
 			drone6.setWeigtLimit(500);
 			drone6.setBatteryCapacity(50);
-			drone6.setDroneState(DroneState.LOADING);
+			drone6.setDroneState(DroneState.IDLE);
 			droneList.add(drone6);
 
 			Drone drone7 = new Drone();
 			drone7.setSerialNumber("DRN572462506332");
 			drone7.setModel("lightweight");
-			drone7.setWeigtLimit(400);
-			drone7.setBatteryCapacity(24);
-			drone7.setDroneState(DroneState.LOADING);
+			drone7.setWeigtLimit(500);
+			drone7.setBatteryCapacity(30);
+			drone7.setDroneState(DroneState.DELIVERED);
 			droneList.add(drone7);
 			droneRepository.saveAll(droneList);
 
@@ -96,7 +96,7 @@ public class DroneApplication {
 			drone8.setModel("lightweight");
 			drone8.setWeigtLimit(500);
 			drone8.setBatteryCapacity(50);
-			drone8.setDroneState(DroneState.LOADING);
+			drone8.setDroneState(DroneState.DELIVERING);
 			droneList.add(drone8);
 
 			Drone drone9 = new Drone();
@@ -104,7 +104,7 @@ public class DroneApplication {
 			drone9.setModel("lightweight");
 			drone9.setWeigtLimit(500);
 			drone9.setBatteryCapacity(24);
-			drone9.setDroneState(DroneState.LOADING);
+			drone9.setDroneState(DroneState.DELIVERING);
 			droneList.add(drone9);
 			droneRepository.saveAll(droneList);
 
@@ -165,7 +165,7 @@ public class DroneApplication {
 			droneToMedicationRepository.save(dm4);
 
 			DroneToMedication dm5 = new DroneToMedication();
-			dm5.setDrone(drone1);
+			dm5.setDrone(drone3);
 			dm5.setMedication(m2);
 			dm5.setMedicationState(MedicationState.LOADING);
 			droneToMedicationRepository.save(dm5);

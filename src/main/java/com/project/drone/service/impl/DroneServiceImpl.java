@@ -5,6 +5,7 @@ import com.project.drone.model.Drone;
 import com.project.drone.model.DroneState;
 import com.project.drone.model.DroneToMedication;
 import com.project.drone.model.Medication;
+import com.project.drone.payloads.AvailableDrone;
 import com.project.drone.repositories.DroneRepository;
 import com.project.drone.repositories.DroneToMedicationRepository;
 import com.project.drone.service.DroneService;
@@ -31,25 +32,10 @@ public class DroneServiceImpl implements DroneService {
     }
 
     @Override
-    public List<Drone> findAvailableDroneForLoading(Medication medication) {
+    public List<AvailableDrone> findAvailableDroneForLoading(Integer medicationWeight) {
 
-        List<Drone> initialDroneList = droneRepository.findAllAvailableDrones(medication.getWeight());
 
-        List<Drone> idleDroneList =  initialDroneList
-                .stream()
-                .filter(drone-> drone.getDroneState()==DroneState.IDLE)
-                .collect(Collectors.toList());
-
-        List<Drone> nonIdleDroneList =  initialDroneList
-                .stream()
-                .filter(drone-> drone.getDroneState()!=DroneState.IDLE)
-                .collect(Collectors.toList());
-
-        nonIdleDroneList.forEach(drone->{
-            List<DroneToMedication> droneToMedicationList = droneToMedicationRepository.findByDroneSerialNumber();
-        });
-
-        return nonIdleDroneList;
+        return droneToMedicationRepository.getAvailableDroneForLoading(medicationWeight);
     }
 
     @Override
