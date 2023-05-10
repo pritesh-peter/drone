@@ -2,7 +2,6 @@ package com.project.drone.controllers;
 
 import com.project.drone.model.*;
 import com.project.drone.payloads.AvailableDrone;
-import com.project.drone.repositories.DroneToMedicationRepository;
 import com.project.drone.service.DroneService;
 import com.project.drone.service.DroneToMedicationService;
 import com.project.drone.service.EventLogService;
@@ -47,10 +46,10 @@ public class DispatchController {
 
         Medication loadingMecation = medicationService.findMedicationById(medication.getId());
 
-        List<AvailableDrone>  availableDrones = droneService.findAvailableDroneForLoading(medication.getWeight());
+        List<AvailableDrone>  availableDrones = droneService.findAvailableDroneForLoading(loadingMecation.getWeight());
         AvailableDrone bestAvailableDroneForLoad = availableDrones.get(0);
 
-        DroneToMedication dispatchedDrone = droneToMedicationService.addDroneToMedication(bestAvailableDroneForLoad,medication);
+        DroneToMedication dispatchedDrone = droneToMedicationService.addDroneToMedication(bestAvailableDroneForLoad,loadingMecation);
 
         return new ResponseEntity<>(dispatchedDrone, HttpStatus.OK);
     }
@@ -72,5 +71,12 @@ public class DispatchController {
          }else{
              return new ResponseEntity<>("Failed",HttpStatus.BAD_REQUEST);
          }
+    }
+
+    @GetMapping("/status/{droneId}")
+    public ResponseEntity<Drone> getDroneStatus(@PathVariable int droneId){
+         Drone drone = droneService.findDroneById(droneId);
+
+         return new ResponseEntity<>(drone,HttpStatus.OK);
     }
 }

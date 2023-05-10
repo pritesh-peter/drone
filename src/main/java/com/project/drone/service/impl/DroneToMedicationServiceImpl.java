@@ -7,7 +7,10 @@ import com.project.drone.payloads.AvailableDrone;
 import com.project.drone.repositories.DroneToMedicationRepository;
 import com.project.drone.service.DroneService;
 import com.project.drone.service.DroneToMedicationService;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class DroneToMedicationServiceImpl implements DroneToMedicationService {
@@ -15,7 +18,7 @@ public class DroneToMedicationServiceImpl implements DroneToMedicationService {
     private final DroneToMedicationRepository droneToMedicationRepository;
     private final DroneService droneService;
 
-    public DroneToMedicationServiceImpl(DroneToMedicationRepository droneToMedicationRepository, DroneService droneService){
+    public DroneToMedicationServiceImpl(DroneToMedicationRepository droneToMedicationRepository,@Lazy DroneService droneService){
         this.droneToMedicationRepository = droneToMedicationRepository;
         this.droneService = droneService;
     }
@@ -29,5 +32,10 @@ public class DroneToMedicationServiceImpl implements DroneToMedicationService {
         droneToMedicationRepository.save(droneToMedication);
 
         return droneToMedication;
+    }
+
+    @Override
+    public List<AvailableDrone> getAvailableDronesForLoading(Double medicationWeight) {
+        return droneToMedicationRepository.getAvailableDroneForLoading(medicationWeight);
     }
 }

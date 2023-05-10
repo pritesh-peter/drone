@@ -1,7 +1,6 @@
 package com.project.drone.service.impl;
 
 import com.project.drone.exceptions.ResourceNotFoundException;
-import com.project.drone.model.Drone;
 import com.project.drone.model.DroneToMedication;
 import com.project.drone.model.Medication;
 import com.project.drone.repositories.DroneToMedicationRepository;
@@ -10,7 +9,6 @@ import com.project.drone.service.MedicationService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service

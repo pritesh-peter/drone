@@ -20,12 +20,10 @@ public class DroneToMedication {
 
     @ManyToOne
     @JoinColumn(name = "drone_id")
-    @JsonIgnore
     Drone drone;
 
     @ManyToOne
     @JoinColumn(name = "medication_id")
-    @JsonIgnore
     Medication medication;
 
     MedicationState medicationState;

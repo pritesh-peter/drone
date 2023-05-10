@@ -34,7 +34,6 @@ public class EventLogServiceImpl implements EventLogService {
             validateDrone.setBatteryCapacity(drone.getBatteryCapacity());
         return true;
         }
-
         return false;
     }
 }

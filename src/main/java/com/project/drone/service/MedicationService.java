@@ -6,7 +6,6 @@ import java.util.List;
 
 public interface MedicationService {
 
-
     Medication findMedicationById(int medicationId);
 
     List<Medication> findLoadedMedicationsByDrone(Integer droneId);
