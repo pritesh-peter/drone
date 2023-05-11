@@ -32,6 +32,7 @@ public class EventLogServiceImpl implements EventLogService {
             eventLogRepository.save(newLog);
 
             validateDrone.setBatteryCapacity(drone.getBatteryCapacity());
+            droneService.updateDrone(validateDrone);
         return true;
         }
         return false;

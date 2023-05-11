@@ -32,4 +32,9 @@ public class DroneServiceImpl implements DroneService {
         return droneRepository.findById(droneId)
                 .orElseThrow(()-> new ResourceNotFoundException("Drone","id",droneId));
     }
+
+    @Override
+    public Drone updateDrone(Drone validateDrone) {
+        return droneRepository.save(validateDrone);
+    }
 }

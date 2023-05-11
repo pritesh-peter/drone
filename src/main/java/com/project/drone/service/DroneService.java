@@ -11,4 +11,6 @@ public interface DroneService {
     List<AvailableDrone> findAvailableDroneForLoading(Double medicationWeight);
 
     Drone findDroneById(Integer droneId);
+
+    Drone updateDrone(Drone validateDrone);
 }
