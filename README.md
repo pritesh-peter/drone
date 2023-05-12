@@ -1,5 +1,5 @@
 
-<h2>The Drone V1/h2>
+<h2>The Drone V1</h2>
 
 
 <h3>**How to Run**</h3>
